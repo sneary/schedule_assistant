@@ -31,7 +31,7 @@
 
     <div class="w-full max-w-4xl mx-auto bg-gray-800 rounded-2xl shadow-lg p-6 md:p-8">
         <header class="text-center mb-6">
-            <h1 class="text-3xl md:text-4xl font-bold text-white">Vin Bin Schedule Assistant</h1>
+            <h1 class="text-3xl md:text-4xl font-bold text-white">Schedule Assistant</h1>
             <p class="mt-2 text-gray-400">Upload your schedule to view shifts and add them to your Google Calendar.</p>
         </header>
 
@@ -45,6 +45,30 @@
                 Sign Out
             </button>
              <p id="auth-status" class="text-sm mt-3 text-green-400 font-medium"></p>
+        </div>
+        
+        <!-- How-to Bypass Warning Section -->
+        <div class="mb-6 text-sm text-gray-400 text-center">
+            <details>
+                <summary class="cursor-pointer hover:text-white transition-colors">Is Google showing an "unverified app" warning?</summary>
+                <div class="mt-4 text-left p-4 bg-gray-700 rounded-lg border border-gray-600 max-w-2xl mx-auto">
+                    <p class="mb-4 font-medium">While this app is pending verification, you may need to click through a few screens to grant permission. Here's how:</p>
+                    <ol class="list-decimal list-inside space-y-6">
+                        <li>
+                            <p class="font-semibold">On the first screen, click the "Advanced" link.</p>
+                            <img src="oauth-1.png" alt="Step 1: Click Advanced" class="mt-2 rounded-lg shadow-md">
+                        </li>
+                        <li>
+                            <p class="font-semibold">This will reveal a new link at the bottom. Click on "Go to Schedule Assistant (unsafe)".</p>
+                            <img src="oauth-2.png" alt="Step 2: Click Go to app" class="mt-2 rounded-lg shadow-md">
+                        </li>
+                        <li>
+                            <p class="font-semibold">Finally, you will be taken to the actual permissions screen. Click "Allow" to grant the application access to your calendar.</p>
+                            <img src="oauth-3.png" alt="Step 3: Click Allow" class="mt-2 rounded-lg shadow-md">
+                        </li>
+                    </ol>
+                </div>
+            </details>
         </div>
 
         <!-- File Upload Section -->
@@ -88,7 +112,6 @@
 
     <script>
         // --- CONFIGURATION ---
-        // IMPORTANT: Replace with your Google Cloud project's Client ID and API Key.
         const CLIENT_ID = '__GCP_CLIENT_ID__';
         const API_KEY = '__GCP_API_KEY__';
         const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
