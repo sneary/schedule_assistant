@@ -419,8 +419,16 @@
 
         // --- Google Calendar Logic ---
         function parseShiftTimes(shiftStr) {
-            const parts = shiftStr.replace(/\(.*\)/, '').trim().split('-');
-            if (parts.length !== 2) return null;
+            // Use a regular expression to find the first valid time-like pattern (e.g., "9:15-2:30" or "9-4")
+            const timeRegex = /(\d{1,2}(:\d{2})?)\s*-\s*(\d{1,2}(:\d{2})?)/;
+            const match = shiftStr.match(timeRegex);
+
+            // If no pattern is found in the cell, we can't parse it.
+            if (!match) return null;
+            
+            // The actual time range string is the first match
+            const timeRangeStr = match[0];
+            const parts = timeRangeStr.split('-');
 
             const parseTimePart = (timePart) => {
                 const components = timePart.trim().split(':');
@@ -448,7 +456,7 @@
 
             if (endHour > 12) {} 
             else if (endHour >= 9 && endHour <= 12) {
-                if (startHour > endHour) endHour += 12;
+                if (startHour > endHour && startHour < 24) endHour += 12;
             }
              else { 
                 endHour += 12; 
@@ -525,5 +533,4 @@
     </script>
 </body>
 </html>
-
 
